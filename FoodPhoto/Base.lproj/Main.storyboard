@@ -96,7 +96,8 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="313" id="7vV-DY-dgE"/>
                                 </constraints>
-                                <string key="text">The icons used in this app wereprovided by Icons8 https://icons8.com/</string>
+                                <string key="text">The icons used in this app were
+provided by Icons8 https://icons8.com/</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -136,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czS-6l-ZFg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="210" y="-452"/>
+            <point key="canvasLocation" x="750" y="-1010"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
