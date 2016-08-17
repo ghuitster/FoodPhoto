@@ -1,0 +1,300 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BFEBA0C41D63FED60043710E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEBA0C31D63FED60043710E /* AppDelegate.swift */; };
+		BFEBA0C61D63FED60043710E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEBA0C51D63FED60043710E /* FirstViewController.swift */; };
+		BFEBA0C81D63FED60043710E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEBA0C71D63FED60043710E /* SecondViewController.swift */; };
+		BFEBA0CB1D63FED60043710E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFEBA0C91D63FED60043710E /* Main.storyboard */; };
+		BFEBA0CD1D63FED60043710E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFEBA0CC1D63FED60043710E /* Assets.xcassets */; };
+		BFEBA0D01D63FED60043710E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFEBA0CE1D63FED60043710E /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BFEBA0C01D63FED60043710E /* FoodPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFEBA0C31D63FED60043710E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BFEBA0C51D63FED60043710E /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		BFEBA0C71D63FED60043710E /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		BFEBA0CA1D63FED60043710E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BFEBA0CC1D63FED60043710E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BFEBA0CF1D63FED60043710E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BFEBA0D11D63FED60043710E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BFEBA0BD1D63FED60043710E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BFEBA0B71D63FED60043710E = {
+			isa = PBXGroup;
+			children = (
+				BFEBA0C21D63FED60043710E /* FoodPhoto */,
+				BFEBA0C11D63FED60043710E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BFEBA0C11D63FED60043710E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BFEBA0C01D63FED60043710E /* FoodPhoto.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BFEBA0C21D63FED60043710E /* FoodPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				BFEBA0C31D63FED60043710E /* AppDelegate.swift */,
+				BFEBA0C51D63FED60043710E /* FirstViewController.swift */,
+				BFEBA0C71D63FED60043710E /* SecondViewController.swift */,
+				BFEBA0C91D63FED60043710E /* Main.storyboard */,
+				BFEBA0CC1D63FED60043710E /* Assets.xcassets */,
+				BFEBA0CE1D63FED60043710E /* LaunchScreen.storyboard */,
+				BFEBA0D11D63FED60043710E /* Info.plist */,
+			);
+			path = FoodPhoto;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BFEBA0BF1D63FED60043710E /* FoodPhoto */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFEBA0D41D63FED60043710E /* Build configuration list for PBXNativeTarget "FoodPhoto" */;
+			buildPhases = (
+				BFEBA0BC1D63FED60043710E /* Sources */,
+				BFEBA0BD1D63FED60043710E /* Frameworks */,
+				BFEBA0BE1D63FED60043710E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FoodPhoto;
+			productName = FoodPhoto;
+			productReference = BFEBA0C01D63FED60043710E /* FoodPhoto.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFEBA0B81D63FED60043710E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Utah State University";
+				TargetAttributes = {
+					BFEBA0BF1D63FED60043710E = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = D946LZ6P99;
+					};
+				};
+			};
+			buildConfigurationList = BFEBA0BB1D63FED60043710E /* Build configuration list for PBXProject "FoodPhoto" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BFEBA0B71D63FED60043710E;
+			productRefGroup = BFEBA0C11D63FED60043710E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BFEBA0BF1D63FED60043710E /* FoodPhoto */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BFEBA0BE1D63FED60043710E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFEBA0D01D63FED60043710E /* LaunchScreen.storyboard in Resources */,
+				BFEBA0CD1D63FED60043710E /* Assets.xcassets in Resources */,
+				BFEBA0CB1D63FED60043710E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BFEBA0BC1D63FED60043710E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFEBA0C81D63FED60043710E /* SecondViewController.swift in Sources */,
+				BFEBA0C41D63FED60043710E /* AppDelegate.swift in Sources */,
+				BFEBA0C61D63FED60043710E /* FirstViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BFEBA0C91D63FED60043710E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFEBA0CA1D63FED60043710E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BFEBA0CE1D63FED60043710E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFEBA0CF1D63FED60043710E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BFEBA0D21D63FED60043710E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BFEBA0D31D63FED60043710E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BFEBA0D51D63FED60043710E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FoodPhoto/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.usu.FoodPhoto;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BFEBA0D61D63FED60043710E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FoodPhoto/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.usu.FoodPhoto;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BFEBA0BB1D63FED60043710E /* Build configuration list for PBXProject "FoodPhoto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFEBA0D21D63FED60043710E /* Debug */,
+				BFEBA0D31D63FED60043710E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFEBA0D41D63FED60043710E /* Build configuration list for PBXNativeTarget "FoodPhoto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFEBA0D51D63FED60043710E /* Debug */,
+				BFEBA0D61D63FED60043710E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFEBA0B81D63FED60043710E /* Project object */;
+}
