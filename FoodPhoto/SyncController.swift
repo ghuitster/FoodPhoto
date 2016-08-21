@@ -1,16 +1,17 @@
 //
-//  FirstViewController.swift
+//  SyncController.swift
 //  FoodPhoto
 //
-//  Created by Jessica Borup on 8/16/16.
+//  Created by David Barley on 8/16/16.
 //  Copyright © 2016 Utah State University. All rights reserved.
 //
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class SyncController: UIViewController {
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
