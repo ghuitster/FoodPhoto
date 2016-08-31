@@ -43,9 +43,17 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3bD-sj-A78">
                                 <rect key="frame" x="0.0" y="507" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem title="Before" id="z09-C1-eUb"/>
+                                    <barButtonItem title="Before" id="z09-C1-eUb">
+                                        <connections>
+                                            <action selector="takeBeforePicture:" destination="9pv-A4-QxB" id="Gp8-0O-XhL"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="VYk-t8-oDf"/>
-                                    <barButtonItem title="After" id="ctx-cx-bhN"/>
+                                    <barButtonItem title="After" id="ctx-cx-bhN">
+                                        <connections>
+                                            <action selector="takeAfterPicture:" destination="9pv-A4-QxB" id="fcm-iY-txM"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
