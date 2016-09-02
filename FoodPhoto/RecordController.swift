@@ -1,14 +1,14 @@
 import UIKit
 
 class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    @IBOutlet var studentIdField: UITextField!
+    @IBOutlet var studentInformationField: UITextField!
     @IBOutlet var siteCodeField: UITextField!
     let imagePicker: UIImagePickerController! = UIImagePickerController()
     var imagePath: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.studentIdField.becomeFirstResponder()
+        self.studentInformationField.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -16,7 +16,7 @@ class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerCont
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if textField == studentIdField {
+        if textField == studentInformationField {
             self.siteCodeField.becomeFirstResponder()
         } else {
             textField.resignFirstResponder()
@@ -32,7 +32,9 @@ class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerCont
         dateFormatter.dateFormat = myFormat
         let convertedDate = dateFormatter.stringFromDate(currentDate)
         
-        return self.studentIdField.text! + "-" + self.siteCodeField.text! + "-" + convertedDate + "-"
+        let strippedStudentInformation = self.studentInformationField.text!.stringByReplacingOccurrencesOfString(" ", withString: "")
+        
+        return strippedStudentInformation + "-" + self.siteCodeField.text! + "-" + convertedDate + "-"
     }
     
     @IBAction func takeBeforePicture(sender: UIBarButtonItem) {
@@ -72,7 +74,7 @@ class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerCont
     }
     
     func resetForNewImage() {
-        self.studentIdField.text = ""
+        self.studentInformationField.text = ""
         self.imagePath = ""
     }
     
