@@ -27,9 +27,8 @@ class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerCont
     
     func getPathStart() -> String {
         let currentDate = NSDate()
-        let myFormat = NSDateFormatter.dateFormatFromTemplate("ddMMMyyyy", options: 0, locale: NSLocale.currentLocale())
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = myFormat
+        dateFormatter.dateFormat = "ddMMMyyyy"
         let convertedDate = dateFormatter.stringFromDate(currentDate)
         
         let strippedStudentInformation = self.studentInformationField.text!.stringByReplacingOccurrencesOfString(" ", withString: "")

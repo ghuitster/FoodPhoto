@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -92,7 +92,20 @@
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jR-jI-TCF">
+                                <rect key="frame" x="283" y="75" width="34" height="30"/>
+                                <state key="normal" title="Sync"/>
+                                <connections>
+                                    <action selector="syncImages:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="gfZ-g0-dUN"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9jR-jI-TCF" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Y2e-9q-NGq"/>
+                            <constraint firstItem="9jR-jI-TCF" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="55" id="wm6-ND-U2T"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Sync" image="Connection Sync Filled-25" id="cPa-gy-q4n"/>
                 </viewController>
