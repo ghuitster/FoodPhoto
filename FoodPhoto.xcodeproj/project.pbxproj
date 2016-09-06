@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0B4C8A20CCE002055A6C5A3 /* Pods_FoodPhoto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0BFA6174E946A8B2B36C69 /* Pods_FoodPhoto.framework */; };
+		BF0095DB1D7E731400411976 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0095DA1D7E731400411976 /* Config.swift */; };
 		BFEBA0C41D63FED60043710E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEBA0C31D63FED60043710E /* AppDelegate.swift */; };
 		BFEBA0C61D63FED60043710E /* RecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEBA0C51D63FED60043710E /* RecordController.swift */; };
 		BFEBA0C81D63FED60043710E /* SyncController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEBA0C71D63FED60043710E /* SyncController.swift */; };
@@ -16,6 +18,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		69C5EA99E6647918EEEA9957 /* Pods-FoodPhoto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodPhoto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodPhoto/Pods-FoodPhoto.debug.xcconfig"; sourceTree = "<group>"; };
+		8E1E213F171738C31034F6E4 /* Pods-FoodPhoto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodPhoto.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodPhoto/Pods-FoodPhoto.release.xcconfig"; sourceTree = "<group>"; };
+		BA0BFA6174E946A8B2B36C69 /* Pods_FoodPhoto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodPhoto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF0095DA1D7E731400411976 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		BFEBA0C01D63FED60043710E /* FoodPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFEBA0C31D63FED60043710E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFEBA0C51D63FED60043710E /* RecordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordController.swift; sourceTree = "<group>"; };
@@ -31,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0B4C8A20CCE002055A6C5A3 /* Pods_FoodPhoto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24423332CAFB65ED04B8991C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				69C5EA99E6647918EEEA9957 /* Pods-FoodPhoto.debug.xcconfig */,
+				8E1E213F171738C31034F6E4 /* Pods-FoodPhoto.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		244503A4A403C08DF61C2E53 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BA0BFA6174E946A8B2B36C69 /* Pods_FoodPhoto.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BFEBA0B71D63FED60043710E = {
 			isa = PBXGroup;
 			children = (
 				BFEBA0C21D63FED60043710E /* FoodPhoto */,
 				BFEBA0C11D63FED60043710E /* Products */,
+				24423332CAFB65ED04B8991C /* Pods */,
+				244503A4A403C08DF61C2E53 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,6 +89,7 @@
 				BFEBA0CC1D63FED60043710E /* Assets.xcassets */,
 				BFEBA0CE1D63FED60043710E /* LaunchScreen.storyboard */,
 				BFEBA0D11D63FED60043710E /* Info.plist */,
+				BF0095DA1D7E731400411976 /* Config.swift */,
 			);
 			path = FoodPhoto;
 			sourceTree = "<group>";
@@ -74,9 +101,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFEBA0D41D63FED60043710E /* Build configuration list for PBXNativeTarget "FoodPhoto" */;
 			buildPhases = (
+				BEF23391658EFC8EEF3C9032 /* [CP] Check Pods Manifest.lock */,
 				BFEBA0BC1D63FED60043710E /* Sources */,
 				BFEBA0BD1D63FED60043710E /* Frameworks */,
 				BFEBA0BE1D63FED60043710E /* Resources */,
+				72B869E71259A16472F89AF3 /* [CP] Embed Pods Frameworks */,
+				A0963CA3E14BA9C6D7FA69C0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -134,12 +164,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		72B869E71259A16472F89AF3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodPhoto/Pods-FoodPhoto-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0963CA3E14BA9C6D7FA69C0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FoodPhoto/Pods-FoodPhoto-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BEF23391658EFC8EEF3C9032 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BFEBA0BC1D63FED60043710E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				BFEBA0C81D63FED60043710E /* SyncController.swift in Sources */,
+				BF0095DB1D7E731400411976 /* Config.swift in Sources */,
 				BFEBA0C41D63FED60043710E /* AppDelegate.swift in Sources */,
 				BFEBA0C61D63FED60043710E /* RecordController.swift in Sources */,
 			);
@@ -254,6 +333,7 @@
 		};
 		BFEBA0D51D63FED60043710E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69C5EA99E6647918EEEA9957 /* Pods-FoodPhoto.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FoodPhoto/Info.plist;
@@ -265,6 +345,7 @@
 		};
 		BFEBA0D61D63FED60043710E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E1E213F171738C31034F6E4 /* Pods-FoodPhoto.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FoodPhoto/Info.plist;

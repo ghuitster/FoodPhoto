@@ -1,14 +1,23 @@
 import UIKit
+import BoxContentSDK
 
 class SyncController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func loginBox(sender: AnyObject) {
+        BOXContentClient.setClientID(Config.clientId, clientSecret: Config.clientSecret)
+        
+        BOXContentClient.defaultClient().authenticateWithCompletionBlock({(user: BOXUser!, error: NSError!) -> Void in
+            if error == nil {
+                print("Logged in user: \(user.login)")
+            }
+        })
     }
     
     @IBAction func syncImages(sender: AnyObject) {

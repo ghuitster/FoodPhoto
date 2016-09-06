@@ -100,11 +100,20 @@
                                     <action selector="syncImages:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="gfZ-g0-dUN"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2SU-79-dQ0">
+                                <rect key="frame" x="281" y="132" width="38" height="30"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="loginBox:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="PRK-Su-i2C"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9jR-jI-TCF" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Y2e-9q-NGq"/>
-                            <constraint firstItem="9jR-jI-TCF" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="55" id="wm6-ND-U2T"/>
+                            <constraint firstItem="9jR-jI-TCF" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="1Td-1L-M6J"/>
+                            <constraint firstItem="9jR-jI-TCF" firstAttribute="centerX" secondItem="2SU-79-dQ0" secondAttribute="centerX" id="IIf-G8-euJ"/>
+                            <constraint firstItem="2SU-79-dQ0" firstAttribute="top" secondItem="9jR-jI-TCF" secondAttribute="bottom" constant="27" id="Kbf-tC-c6r"/>
+                            <constraint firstItem="9jR-jI-TCF" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="55" id="Wiw-oc-I2J"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Sync" image="Connection Sync Filled-25" id="cPa-gy-q4n"/>
