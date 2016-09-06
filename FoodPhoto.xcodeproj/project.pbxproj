@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A0B4C8A20CCE002055A6C5A3 /* Pods_FoodPhoto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0BFA6174E946A8B2B36C69 /* Pods_FoodPhoto.framework */; };
-		BF0095DB1D7E731400411976 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0095DA1D7E731400411976 /* Config.swift */; };
+		BF0B98EE1D7E766F00BE99E9 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0B98ED1D7E766F00BE99E9 /* Config.swift */; };
 		BFEBA0C41D63FED60043710E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEBA0C31D63FED60043710E /* AppDelegate.swift */; };
 		BFEBA0C61D63FED60043710E /* RecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEBA0C51D63FED60043710E /* RecordController.swift */; };
 		BFEBA0C81D63FED60043710E /* SyncController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEBA0C71D63FED60043710E /* SyncController.swift */; };
@@ -21,7 +21,7 @@
 		69C5EA99E6647918EEEA9957 /* Pods-FoodPhoto.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodPhoto.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FoodPhoto/Pods-FoodPhoto.debug.xcconfig"; sourceTree = "<group>"; };
 		8E1E213F171738C31034F6E4 /* Pods-FoodPhoto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodPhoto.release.xcconfig"; path = "Pods/Target Support Files/Pods-FoodPhoto/Pods-FoodPhoto.release.xcconfig"; sourceTree = "<group>"; };
 		BA0BFA6174E946A8B2B36C69 /* Pods_FoodPhoto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodPhoto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF0095DA1D7E731400411976 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		BF0B98ED1D7E766F00BE99E9 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		BFEBA0C01D63FED60043710E /* FoodPhoto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPhoto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFEBA0C31D63FED60043710E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFEBA0C51D63FED60043710E /* RecordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordController.swift; sourceTree = "<group>"; };
@@ -82,6 +82,7 @@
 		BFEBA0C21D63FED60043710E /* FoodPhoto */ = {
 			isa = PBXGroup;
 			children = (
+				BF0B98ED1D7E766F00BE99E9 /* Config.swift */,
 				BFEBA0C31D63FED60043710E /* AppDelegate.swift */,
 				BFEBA0C51D63FED60043710E /* RecordController.swift */,
 				BFEBA0C71D63FED60043710E /* SyncController.swift */,
@@ -89,7 +90,6 @@
 				BFEBA0CC1D63FED60043710E /* Assets.xcassets */,
 				BFEBA0CE1D63FED60043710E /* LaunchScreen.storyboard */,
 				BFEBA0D11D63FED60043710E /* Info.plist */,
-				BF0095DA1D7E731400411976 /* Config.swift */,
 			);
 			path = FoodPhoto;
 			sourceTree = "<group>";
@@ -218,7 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFEBA0C81D63FED60043710E /* SyncController.swift in Sources */,
-				BF0095DB1D7E731400411976 /* Config.swift in Sources */,
+				BF0B98EE1D7E766F00BE99E9 /* Config.swift in Sources */,
 				BFEBA0C41D63FED60043710E /* AppDelegate.swift in Sources */,
 				BFEBA0C61D63FED60043710E /* RecordController.swift in Sources */,
 			);
