@@ -20,21 +20,44 @@ class SyncController: UIViewController {
         })
     }
     
-    func syncImages() {
-        let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+    func syncImages() -> Void {
+        var errorOccurred = false
         
-        do {
-            let directoryContents = try NSFileManager.defaultManager().contentsOfDirectoryAtURL(documentsUrl, includingPropertiesForKeys: nil, options: [])
-            print(directoryContents)
-            
-            let jpgFiles = directoryContents.filter{$0.pathExtension == "jpg"}
-            print("jpg urls:", jpgFiles)
-            let jpgFileNames = jpgFiles.flatMap({$0.URLByDeletingPathExtension?.lastPathComponent})
-            print("jpg list:", jpgFileNames)
-            
-        } catch {
+        let rootFolderItemsRequest = BOXContentClient.defaultClient().folderItemsRequestWithID("0")
+        rootFolderItemsRequest.performRequestWithCompletion({(items: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                var foodPhotoFolderExists = false
+                for item in items as! [BOXItem] {
+                    if item.isFolder && item.name == "FoodPhoto" {
+                        foodPhotoFolderExists = true
+                        self.uploadImages(item.modelID)
+                    }
+                }
+                
+                if !foodPhotoFolderExists {
+                    let foodPhotoFolderCreateRequest = BOXContentClient.defaultClient().folderCreateRequestWithName("FoodPhoto", parentFolderID: "0")
+                    foodPhotoFolderCreateRequest.performRequestWithCompletion({(folder: BOXFolder!, error: NSError!) -> Void in
+                        if error == nil {
+                            self.uploadImages(folder.modelID)
+                        } else {
+                            errorOccurred = true
+                            print(error)
+                        }
+                    })
+                }
+            } else {
+                errorOccurred = true
+                print(error)
+            }
+        })
+        
+        if errorOccurred {
             self.displayAlert("Sync Error", message: "There was a problem syncing")
         }
+    }
+    
+    func uploadImages(foodPhotoFolderId: String) -> Void {
+        print(foodPhotoFolderId)
     }
     
     func displayAlert(title: String, message: String) {
