@@ -2,8 +2,11 @@ import UIKit
 import BoxContentSDK
 
 class SyncController: UIViewController {
+    @IBOutlet var progressBar: UIProgressView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.progressBar.setProgress(0, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,26 +65,40 @@ class SyncController: UIViewController {
         do {
             let directoryContents = try NSFileManager.defaultManager().contentsOfDirectoryAtURL(documentsUrl, includingPropertiesForKeys: nil, options: [])
             let jpgFiles = directoryContents.filter{$0.pathExtension == "jpg"}
-            
-            for imageUrl in jpgFiles {
-                let imageName = imageUrl.lastPathComponent!
-                
-                self.uploadImage(foodPhotoFolderId, data: NSFileManager.defaultManager().contentsAtPath(imageUrl.path!)!, imageName: imageName)
-            }
+            self.progressBar.setProgress(0, animated: true)
+            self.uploadImagesRepeater(foodPhotoFolderId, jpgFiles: jpgFiles, index: 0)
         } catch {
-            
+            self.displayAlert("Sync Error", message: "There was a problem syncing")
         }
     }
     
-    func uploadImage(foodPhotoFolderId: String, data: NSData, imageName: String) -> Void {
+    func uploadImagesRepeater(foodPhotoFolderId: String, jpgFiles: [NSURL], index: Int) -> Void {
+        if index >= jpgFiles.count {
+            self.displayAlert("Sync Success", message: "All images successfully synced")
+            return
+        }
+        
+        let imageName = jpgFiles[index].lastPathComponent!
+        let data = NSFileManager.defaultManager().contentsAtPath(jpgFiles[index].path!)!
         let uploadRequest = BOXContentClient.defaultClient().fileUploadRequestToFolderWithID(foodPhotoFolderId, fromData: data, fileName: imageName)
+        
         uploadRequest.performRequestWithProgress({(totalBytesTransferred: Int64, totalBytesExpectedToTransfer: Int64) -> Void in
-            // Update a progress bar, etc.
             }, completion: {(file: BOXFile!, error: NSError!) -> Void in
                 if error == nil {
+                    do {
+                        try NSFileManager.defaultManager().removeItemAtURL(jpgFiles[index])
+                    } catch {
+                        self.displayAlert("Sync Error", message: "There was an error when syncing")
+                        return
+                    }
+                    
                     print("successfully uploaded " + imageName)
+                    let progress = Float(index + 1) / Float(jpgFiles.count)
+                    print(progress)
+                    self.progressBar.setProgress(progress, animated: true)
+                    self.uploadImagesRepeater(foodPhotoFolderId, jpgFiles: jpgFiles, index: index + 1)
                 } else {
-                    print(error)
+                    self.displayAlert("Sync Error", message: "There was an error when syncing")
                 }
         })
     }

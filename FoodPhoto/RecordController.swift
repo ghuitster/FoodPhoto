@@ -78,7 +78,7 @@ class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerCont
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        let imageData = UIImageJPEGRepresentation(image, 0.6)
+        let imageData = UIImageJPEGRepresentation(image, 0.4)
         
         do {
             try imageData!.writeToFile(fileInDocumentsDirectory(self.imagePath), options: .AtomicWrite)

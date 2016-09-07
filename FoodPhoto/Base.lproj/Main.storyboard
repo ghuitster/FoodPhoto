@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Record-->
@@ -107,16 +108,25 @@
                                     <action selector="logout:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="xU6-SE-Lpa"/>
                                 </connections>
                             </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YPx-9w-pM1">
+                                <rect key="frame" x="20" y="205" width="560" height="2"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9jR-jI-TCF" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="1Td-1L-M6J"/>
-                            <constraint firstItem="9jR-jI-TCF" firstAttribute="centerX" secondItem="2SU-79-dQ0" secondAttribute="centerX" id="IIf-G8-euJ"/>
-                            <constraint firstItem="2SU-79-dQ0" firstAttribute="top" secondItem="9jR-jI-TCF" secondAttribute="bottom" constant="27" id="Kbf-tC-c6r"/>
-                            <constraint firstItem="9jR-jI-TCF" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="55" id="Wiw-oc-I2J"/>
+                            <constraint firstItem="YPx-9w-pM1" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="4DQ-xB-vUX"/>
+                            <constraint firstItem="2SU-79-dQ0" firstAttribute="centerX" secondItem="YPx-9w-pM1" secondAttribute="centerX" id="4V2-b6-H4c"/>
+                            <constraint firstItem="2SU-79-dQ0" firstAttribute="top" secondItem="9jR-jI-TCF" secondAttribute="bottom" constant="27" id="8DG-Wb-wQG"/>
+                            <constraint firstItem="9jR-jI-TCF" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="55" id="8rp-1c-XV4"/>
+                            <constraint firstItem="9jR-jI-TCF" firstAttribute="centerX" secondItem="2SU-79-dQ0" secondAttribute="centerX" id="JBi-Zx-Ao0"/>
+                            <constraint firstItem="YPx-9w-pM1" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="zAn-qy-1SO"/>
+                            <constraint firstItem="YPx-9w-pM1" firstAttribute="top" secondItem="2SU-79-dQ0" secondAttribute="bottom" constant="43" id="zo3-1s-ykx"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Sync" image="Connection Sync Filled-25" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="progressBar" destination="YPx-9w-pM1" id="Iew-CN-ost"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
