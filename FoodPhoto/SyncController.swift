@@ -57,7 +57,33 @@ class SyncController: UIViewController {
     }
     
     func uploadImages(foodPhotoFolderId: String) -> Void {
-        print(foodPhotoFolderId)
+        let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+        
+        do {
+            let directoryContents = try NSFileManager.defaultManager().contentsOfDirectoryAtURL(documentsUrl, includingPropertiesForKeys: nil, options: [])
+            let jpgFiles = directoryContents.filter{$0.pathExtension == "jpg"}
+            
+            for imageUrl in jpgFiles {
+                let imageName = imageUrl.lastPathComponent!
+                
+                self.uploadImage(foodPhotoFolderId, data: NSFileManager.defaultManager().contentsAtPath(imageUrl.path!)!, imageName: imageName)
+            }
+        } catch {
+            
+        }
+    }
+    
+    func uploadImage(foodPhotoFolderId: String, data: NSData, imageName: String) -> Void {
+        let uploadRequest = BOXContentClient.defaultClient().fileUploadRequestToFolderWithID(foodPhotoFolderId, fromData: data, fileName: imageName)
+        uploadRequest.performRequestWithProgress({(totalBytesTransferred: Int64, totalBytesExpectedToTransfer: Int64) -> Void in
+            // Update a progress bar, etc.
+            }, completion: {(file: BOXFile!, error: NSError!) -> Void in
+                if error == nil {
+                    print("successfully uploaded " + imageName)
+                } else {
+                    print(error)
+                }
+        })
     }
     
     func displayAlert(title: String, message: String) {
