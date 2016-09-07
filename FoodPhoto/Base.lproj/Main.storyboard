@@ -97,14 +97,14 @@
                                 <rect key="frame" x="283" y="75" width="34" height="30"/>
                                 <state key="normal" title="Sync"/>
                                 <connections>
-                                    <action selector="syncImages:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="gfZ-g0-dUN"/>
+                                    <action selector="loginBox:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Wbn-Xd-sE3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2SU-79-dQ0">
-                                <rect key="frame" x="281" y="132" width="38" height="30"/>
-                                <state key="normal" title="Login"/>
+                                <rect key="frame" x="276" y="132" width="48" height="30"/>
+                                <state key="normal" title="Logout"/>
                                 <connections>
-                                    <action selector="loginBox:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="PRK-Su-i2C"/>
+                                    <action selector="logout:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="xU6-SE-Lpa"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -11,16 +11,16 @@ class SyncController: UIViewController {
     }
     
     @IBAction func loginBox(sender: AnyObject) {
-        BOXContentClient.setClientID(Config.clientId, clientSecret: Config.clientSecret)
-        
         BOXContentClient.defaultClient().authenticateWithCompletionBlock({(user: BOXUser!, error: NSError!) -> Void in
             if error == nil {
-                print("Logged in user: \(user.login)")
+                self.syncImages()
+            } else {
+                self.displayAlert("Login Error", message: "There was a problem logging in")
             }
         })
     }
     
-    @IBAction func syncImages(sender: AnyObject) {
+    func syncImages() {
         let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
         
         do {
@@ -32,8 +32,30 @@ class SyncController: UIViewController {
             let jpgFileNames = jpgFiles.flatMap({$0.URLByDeletingPathExtension?.lastPathComponent})
             print("jpg list:", jpgFileNames)
             
-        } catch let error as NSError {
-            print(error.localizedDescription)
+        } catch {
+            self.displayAlert("Sync Error", message: "There was a problem syncing")
         }
+    }
+    
+    func displayAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message:
+            message, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func logout(sender: AnyObject) {
+        let logoutAlert = UIAlertController(title: "Logout", message: "Really log out?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        logoutAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: {(action: UIAlertAction!) in
+            BOXContentClient.defaultClient().logOut()
+            self.displayAlert("Logout Success", message: "Successfully logged out")
+        }))
+        
+        logoutAlert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: {(action: UIAlertAction!) in
+        }))
+        
+        self.presentViewController(logoutAlert, animated: true, completion: nil)
     }
 }
