@@ -94,72 +94,72 @@ class SyncController: UIViewController {
         }
     }
     
-    func uploadImages(foodPhotoFolderId: String) -> Void {
+    func getJpgFilesInDocumentsDirectory() -> [NSURL] {
         let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+        var directoryContents: [NSURL]
         
         do {
-            let directoryContents = try NSFileManager.defaultManager().contentsOfDirectoryAtURL(documentsUrl, includingPropertiesForKeys: nil, options: [])
-            let jpgFiles = directoryContents.filter{$0.pathExtension == "jpg"}
-            
-            let totalImages = jpgFiles.count
-            var imagesUploaded = 0
-            self.updateProgress(imagesUploaded, total: totalImages)
-            
-            var errored = false
-            var theError: ErrorType? = nil
-            let mySerialQueue = dispatch_queue_create("edu.usu.nutrition", DISPATCH_QUEUE_SERIAL)
-            
-            for jpgFile in jpgFiles {
-                dispatch_async(mySerialQueue) {
-                    self.backgroundTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler({
-                        self.endBackgroundTask()
-                    })
-                    
-                    let semaphore = dispatch_semaphore_create(0)
-                    
-                    let imageName = jpgFile.lastPathComponent!
-                    let data = NSFileManager.defaultManager().contentsAtPath(jpgFile.path!)!
-                    let uploadRequest = BOXContentClient.defaultClient().fileUploadRequestToFolderWithID(foodPhotoFolderId, fromData: data, fileName: imageName)
-                    
-                    uploadRequest.performRequestWithProgress({(totalBytesTransferred: Int64, totalBytesExpectedToTransfer: Int64) -> Void in
-                        }, completion: {(file: BOXFile!, error: NSError!) -> Void in
-                            if error == nil {
-                                do {
-                                    try NSFileManager.defaultManager().removeItemAtURL(jpgFile)
-                                } catch {
-                                    errored = true
-                                    theError = error
-                                }
-                                
-                                print("successfully uploaded " + imageName)
-                                
-                                imagesUploaded += 1
-                                
-                                dispatch_sync(dispatch_get_main_queue()) {
-                                    self.updateProgress(imagesUploaded, total: totalImages)
-                                }
-                            } else {
-                                theError = error
-                                errored = true
-                            }
-                            
-                            self.endBackgroundTask()
-                            dispatch_semaphore_signal(semaphore)
-                    })
-                    
-                    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-                }
-            
-                if errored {
-                    break
-                }
-            }
-            
-            if errored {
-                self.displayAlert("Sync Error", message: "There was an error when syncing", error: theError)
-            }
+            directoryContents = try NSFileManager.defaultManager().contentsOfDirectoryAtURL(documentsUrl, includingPropertiesForKeys: nil, options: [])
         } catch {
             self.displayAlert("Sync Error", message: "There was a problem syncing", error: error)
+            return [NSURL]()
+        }
+        
+        return directoryContents.filter{$0.pathExtension == "jpg"}
+    }
+    
+    func uploadImages(foodPhotoFolderId: String) -> Void {
+        let jpgFiles = getJpgFilesInDocumentsDirectory()
+        
+        let totalImages = jpgFiles.count
+        var imagesUploaded = 0
+        self.updateProgress(imagesUploaded, total: totalImages)
+
+        let mySerialQueue = dispatch_queue_create("edu.usu.nutrition", DISPATCH_QUEUE_SERIAL)
+        
+        for jpgFile in jpgFiles {
+            dispatch_async(mySerialQueue) {
+                self.backgroundTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler({
+                    self.endBackgroundTask()
+                })
+                
+                let semaphore = dispatch_semaphore_create(0)
+                
+                let imageName = jpgFile.lastPathComponent!
+                let data = NSFileManager.defaultManager().contentsAtPath(jpgFile.path!)!
+                
+                let uploadRequest = BOXContentClient.defaultClient().fileUploadRequestToFolderWithID(foodPhotoFolderId, fromData: data, fileName: imageName)
+                uploadRequest.performRequestWithProgress({(totalBytesTransferred: Int64, totalBytesExpectedToTransfer: Int64) -> Void in
+                    }, completion: {(file: BOXFile!, error: NSError!) -> Void in
+                        if error == nil {
+                            do {
+                                try NSFileManager.defaultManager().removeItemAtURL(jpgFile)
+                            } catch {
+                                dispatch_sync(dispatch_get_main_queue()) {
+                                    self.displayAlert("Sync Error", message: "There was an error when uploading " + imageName, error: error)
+                                }
+                                return
+                            }
+                            
+                            print("successfully uploaded " + imageName)
+                            
+                            imagesUploaded += 1
+                            
+                            dispatch_sync(dispatch_get_main_queue()) {
+                                self.updateProgress(imagesUploaded, total: totalImages)
+                            }
+                        } else {
+                            dispatch_sync(dispatch_get_main_queue()) {
+                                self.displayAlert("Sync Error", message: "There was an error when uploading " + imageName + ". The error was: " + error.box_localizedFailureReasonString(), error: error)
+                            }
+                        }
+                        
+                        self.endBackgroundTask()
+                        dispatch_semaphore_signal(semaphore)
+                })
+                
+                dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+            }
         }
     }
     
