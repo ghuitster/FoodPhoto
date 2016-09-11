@@ -5,9 +5,11 @@ PODS:
   - box-ios-sdk/logger (1.0.13)
   - box-ios-sdk/no-arc (1.0.13):
     - box-ios-sdk/logger
+  - ReachabilitySwift (2.3.3)
 
 DEPENDENCIES:
   - box-ios-sdk (from `git@github.com:box/box-ios-sdk.git`)
+  - ReachabilitySwift
 
 EXTERNAL SOURCES:
   box-ios-sdk:
@@ -20,7 +22,8 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   box-ios-sdk: fe2af3f53d4958919195a00a2d281aa29857943c
+  ReachabilitySwift: e0f6b6f280effb47731acfaaa2d5ffe223703793
 
-PODFILE CHECKSUM: 6905db6960ffe8e3ef770ce430f1c3b037b5a50a
+PODFILE CHECKSUM: 4453138fd6d67d7ae06a2e8f44bb018d75490e77
 
 COCOAPODS: 1.0.1

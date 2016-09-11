@@ -1,5 +1,6 @@
 import UIKit
 import BoxContentSDK
+import ReachabilitySwift
 
 class SyncController: UIViewController {
     @IBOutlet var progressBar: UIProgressView!
@@ -16,7 +17,37 @@ class SyncController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func loginBox(sender: AnyObject) {
+    @IBAction func beginSync(sender: AnyObject) {
+        var reachability: Reachability
+        do {
+            reachability = try Reachability.reachabilityForInternetConnection()
+        } catch {
+            self.displayAlert("Internet Connection Error", message: "You don't have an Internet connection. Connect to the Internet and try again.", error: error)
+            return
+        }
+        
+        if reachability.isReachable() {
+            if reachability.isReachableViaWiFi() {
+                self.loginBox()
+            } else {
+                let connectionAlert = UIAlertController(title: "Cellular Data Connection", message: "You're not connected to WiFi. Syncing may use lots of your data. Are you sure you want to continue?", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                connectionAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction!) in
+                    self.loginBox()
+                }))
+                
+                connectionAlert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: { (action: UIAlertAction!) in
+                    return
+                }))
+                
+                presentViewController(connectionAlert, animated: true, completion: nil)
+            }
+        } else {
+            self.displayAlert("Internet Connection Error", message: "You don't have an Internet connection. Connect to the Internet and try again.", error: nil)
+        }
+    }
+    
+    func loginBox() -> Void {
         BOXContentClient.defaultClient().authenticateWithCompletionBlock({(user: BOXUser!, error: NSError!) -> Void in
             if error == nil {
                 self.syncImages()
