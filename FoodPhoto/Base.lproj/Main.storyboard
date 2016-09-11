@@ -144,7 +144,7 @@
         <!--About-->
         <scene sceneID="WO5-vk-uNm">
             <objects>
-                <viewController id="RSf-EF-fGR" sceneMemberID="viewController">
+                <viewController id="RSf-EF-fGR" customClass="AboutController" customModule="FoodPhoto" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yjw-L0-5J4"/>
                         <viewControllerLayoutGuide type="bottom" id="kTs-7b-Sh6"/>
@@ -166,7 +166,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQN-uZ-r8I">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQN-uZ-r8I">
                                 <rect key="frame" x="144" y="255" width="313" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="313" id="cPO-eG-6M6"/>
@@ -177,7 +177,7 @@ provided by Icons8 https://icons8.com/</string>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5d1-le-QFx">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5d1-le-QFx">
                                 <rect key="frame" x="183" y="318" width="235" height="41"/>
                                 <string key="text">Email usu.nutrition@gmail.comfor support</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -198,6 +198,10 @@ provided by Icons8 https://icons8.com/</string>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="About" image="About Filled-25" id="vF3-1m-r1o"/>
+                    <connections>
+                        <outlet property="iconsLabel" destination="JQN-uZ-r8I" id="4J4-3k-HH8"/>
+                        <outlet property="supportLabel" destination="5d1-le-QFx" id="DvQ-hR-ovv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czS-6l-ZFg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
