@@ -6,12 +6,12 @@ class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerCont
     let imagePicker: UIImagePickerController! = UIImagePickerController()
     var imagePath: String = ""
     
-    override func viewDidLoad() {
+    override func viewDidLoad() -> Void {
         super.viewDidLoad()
         self.studentInformationField.becomeFirstResponder()
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning() -> Void {
         super.didReceiveMemoryWarning()
     }
 
@@ -36,12 +36,12 @@ class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerCont
         return strippedStudentInformation + "-" + self.siteCodeField.text! + "-" + convertedDate + "-"
     }
     
-    @IBAction func takeBeforePicture(sender: UIBarButtonItem) {
+    @IBAction func takeBeforePicture(sender: UIBarButtonItem) -> Void {
         self.imagePath = self.getPathStart() + "before.jpg"
         self.takePicture()
     }
     
-    @IBAction func takeAfterPicture(sender: UIBarButtonItem) {
+    @IBAction func takeAfterPicture(sender: UIBarButtonItem) -> Void {
         self.imagePath = self.getPathStart() + "after.jpg"
         self.takePicture()
     }
@@ -50,7 +50,7 @@ class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerCont
         return UIImagePickerController.isSourceTypeAvailable(.Camera) && UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil
     }
     
-    func takePicture() {
+    func takePicture() -> Void {
         if enoughDiskSpaceAvailable() {
             if self.fieldsContainInformation() {
                 if self.cameraIsAvailable() {
@@ -82,7 +82,7 @@ class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerCont
         return false
     }
     
-    func displayAlert(title: String, message: String) {
+    func displayAlert(title: String, message: String) -> Void {
         let alertController = UIAlertController(title: title, message:
             message, preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
@@ -111,12 +111,12 @@ class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerCont
         return fileURL.path!
     }
     
-    func resetForNewImage() {
+    func resetForNewImage() -> Void {
         self.studentInformationField.text = ""
         self.imagePath = ""
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) -> Void {
         let imageData = UIImageJPEGRepresentation(image, 0.4)
         
         do {
@@ -130,7 +130,7 @@ class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerCont
         })
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) -> Void {
         dismissViewControllerAnimated(true, completion: {
             self.resetForNewImage()
         })

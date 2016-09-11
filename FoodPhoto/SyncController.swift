@@ -7,17 +7,17 @@ class SyncController: UIViewController {
     @IBOutlet var progressText: UILabel!
     var backgroundTask : UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
     
-    override func viewDidLoad() {
+    override func viewDidLoad() -> Void {
         super.viewDidLoad()
         
-        self.updateProgress(0, total: 1)
+        self.updateProgress(0, total: 0)
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning() -> Void {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func beginSync(sender: AnyObject) {
+    @IBAction func beginSync(sender: AnyObject) -> Void {
         var reachability: Reachability
         do {
             reachability = try Reachability.reachabilityForInternetConnection()
@@ -52,15 +52,12 @@ class SyncController: UIViewController {
             if error == nil {
                 self.syncImages()
             } else {
-                self.displayAlert("Login Error", message: "There was a problem logging in", error: error)
+                self.displayAlert("Login Error", message: "There was a problem logging in. The error was: " + error.box_localizedFailureReasonString(), error: error)
             }
         })
     }
     
     func syncImages() -> Void {
-        var errorOccurred = false
-        var theError: ErrorType? = nil
-        
         let rootFolderItemsRequest = BOXContentClient.defaultClient().folderItemsRequestWithID("0")
         rootFolderItemsRequest.performRequestWithCompletion({(items: [AnyObject]!, error: NSError!) -> Void in
             if error == nil {
@@ -78,20 +75,14 @@ class SyncController: UIViewController {
                         if error == nil {
                             self.uploadImages(folder.modelID)
                         } else {
-                            errorOccurred = true
-                            theError = error
+                            self.displayAlert("Sync Error", message: "There was a problem syncing. The error was: " + error.box_localizedFailureReasonString(), error: error)
                         }
                     })
                 }
             } else {
-                errorOccurred = true
-                theError = error
+                self.displayAlert("Sync Error", message: "There was a problem syncing. The error was: " + error.box_localizedFailureReasonString(), error: error)
             }
         })
-        
-        if errorOccurred {
-            self.displayAlert("Sync Error", message: "There was a problem syncing", error: theError)
-        }
     }
     
     func getJpgFilesInDocumentsDirectory() -> [NSURL] {
@@ -109,7 +100,7 @@ class SyncController: UIViewController {
     }
     
     func uploadImages(foodPhotoFolderId: String) -> Void {
-        let jpgFiles = getJpgFilesInDocumentsDirectory()
+        let jpgFiles = self.getJpgFilesInDocumentsDirectory()
         
         let totalImages = jpgFiles.count
         var imagesUploaded = 0
@@ -174,12 +165,12 @@ class SyncController: UIViewController {
         
         self.progressBar.setProgress(progress, animated: true)
         
-        if imagesUploaded == total {
+        if imagesUploaded == total && total != 0 {
             self.displayAlert("Sync Success", message: "All images successfully synced", error: nil)
         }
     }
     
-    func displayAlert(title: String, message: String, error: ErrorType?) {
+    func displayAlert(title: String, message: String, error: ErrorType?) -> Void {
         print(error)
         let alertController = UIAlertController(title: title, message:
             message, preferredStyle: UIAlertControllerStyle.Alert)
@@ -188,7 +179,7 @@ class SyncController: UIViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    @IBAction func logout(sender: AnyObject) {
+    @IBAction func logout(sender: AnyObject) -> Void {
         let logoutAlert = UIAlertController(title: "Logout", message: "Really log out?", preferredStyle: UIAlertControllerStyle.Alert)
         
         logoutAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: {(action: UIAlertAction!) in

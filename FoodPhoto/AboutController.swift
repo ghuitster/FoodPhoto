@@ -5,7 +5,7 @@ class AboutController: UIViewController, MFMailComposeViewControllerDelegate {
     @IBOutlet var iconsLabel: UILabel!
     @IBOutlet var supportLabel: UILabel!
     
-    override func viewDidLoad() {
+    override func viewDidLoad() -> Void {
         let iconsString = self.iconsLabel.text!
         let iconsMutableString = NSMutableAttributedString(string: iconsString, attributes: nil)
         iconsMutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blueColor(), range: NSRange(location:51, length:19))
@@ -25,11 +25,11 @@ class AboutController: UIViewController, MFMailComposeViewControllerDelegate {
         super.viewDidLoad()
     }
     
-    func openIconsLinkBrowser(sender:UITapGestureRecognizer) {
+    func openIconsLinkBrowser(sender:UITapGestureRecognizer) -> Void {
         UIApplication.sharedApplication().openURL(NSURL(string: "https://icons8.com/")!)
     }
     
-    func openSupportEmail(sender:UITapGestureRecognizer) {
+    func openSupportEmail(sender:UITapGestureRecognizer) -> Void {
         let mailComposeViewController = self.configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
             self.presentViewController(mailComposeViewController, animated: true, completion: nil)
@@ -48,7 +48,7 @@ class AboutController: UIViewController, MFMailComposeViewControllerDelegate {
         return mailComposerVC
     }
     
-    func showSendMailErrorAlert() {
+    func showSendMailErrorAlert() -> Void {
         let alertController = UIAlertController(title: "Could Not Send Email", message:
             "Your device could not send e-mail. Please check e-mail configuration and try again.", preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
@@ -56,12 +56,11 @@ class AboutController: UIViewController, MFMailComposeViewControllerDelegate {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) -> Void {
         controller.dismissViewControllerAnimated(true, completion: nil)
     }
-    
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning() -> Void {
         super.didReceiveMemoryWarning()
     }
 }
