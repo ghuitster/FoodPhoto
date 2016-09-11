@@ -51,19 +51,35 @@ class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerCont
     }
     
     func takePicture() {
-        if self.fieldsContainInformation() {
-            if self.cameraIsAvailable(){
-                self.imagePicker.allowsEditing = false
-                self.imagePicker.sourceType = .Camera
-                self.imagePicker.cameraCaptureMode = .Photo
-                self.imagePicker.delegate = self
-                presentViewController(self.imagePicker, animated: true, completion: {})
+        if enoughDiskSpaceAvailable() {
+            if self.fieldsContainInformation() {
+                if self.cameraIsAvailable() {
+                    self.imagePicker.allowsEditing = false
+                    self.imagePicker.sourceType = .Camera
+                    self.imagePicker.cameraCaptureMode = .Photo
+                    self.imagePicker.delegate = self
+                    presentViewController(self.imagePicker, animated: true, completion: {})
+                } else {
+                    self.displayAlert("Camera Not Available", message: "The Camera is not available")
+                }
             } else {
-                self.displayAlert("Camera Not Available", message: "The Camera is not available")
+                self.displayAlert("Empty Field(s)", message: "Make sure 'Student ID or Name' and 'Site Code' both contain information")
             }
         } else {
-            self.displayAlert("Empty Field(s)", message: "Make sure 'Student ID or Name' and 'Site Code' both contain information")
+            self.displayAlert("Disk Space Error", message: "There is not enough disk space ramaining. Clear up some space and try again.")
         }
+    }
+    
+    func enoughDiskSpaceAvailable() -> Bool {
+        let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        
+        if let systemAttributes = try? NSFileManager.defaultManager().attributesOfFileSystemForPath(documentDirectoryPath.last!) {
+            if let freeSize = systemAttributes[NSFileSystemFreeSize] as? NSNumber {
+                return freeSize.longLongValue > 1024
+            }
+        }
+        
+        return false
     }
     
     func displayAlert(title: String, message: String) {
