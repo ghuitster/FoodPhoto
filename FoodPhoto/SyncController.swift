@@ -8,6 +8,8 @@ class SyncController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.updateProgress(0, total: 1)
     }
 
     override func didReceiveMemoryWarning() {
