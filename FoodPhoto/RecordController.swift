@@ -16,7 +16,7 @@ class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerCont
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if textField == studentInformationField {
+        if textField == self.studentInformationField {
             self.siteCodeField.becomeFirstResponder()
         } else {
             textField.resignFirstResponder()
@@ -37,13 +37,13 @@ class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerCont
     }
     
     @IBAction func takeBeforePicture(sender: UIBarButtonItem) {
-        self.imagePath = getPathStart() + "before.jpg"
-        takePicture()
+        self.imagePath = self.getPathStart() + "before.jpg"
+        self.takePicture()
     }
     
     @IBAction func takeAfterPicture(sender: UIBarButtonItem) {
-        self.imagePath = getPathStart() + "after.jpg"
-        takePicture()
+        self.imagePath = self.getPathStart() + "after.jpg"
+        self.takePicture()
     }
     
     func cameraIsAvailable() -> Bool {
@@ -51,13 +51,36 @@ class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerCont
     }
     
     func takePicture() {
-        if cameraIsAvailable() {
-            imagePicker.allowsEditing = false
-            imagePicker.sourceType = .Camera
-            imagePicker.cameraCaptureMode = .Photo
-            imagePicker.delegate = self
-            presentViewController(imagePicker, animated: true, completion: {})
+        if self.fieldsContainInformation() {
+            if self.cameraIsAvailable(){
+                self.imagePicker.allowsEditing = false
+                self.imagePicker.sourceType = .Camera
+                self.imagePicker.cameraCaptureMode = .Photo
+                self.imagePicker.delegate = self
+                presentViewController(self.imagePicker, animated: true, completion: {})
+            } else {
+                self.displayAlert("Camera Not Available", message: "The Camera is not available")
+            }
+        } else {
+            self.displayAlert("Empty Field(s)", message: "Make sure 'Student ID or Name' and 'Site Code' both contain information")
         }
+    }
+    
+    func displayAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message:
+            message, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func fieldsContainInformation() -> Bool {
+        let strippedStudentInformation = self.studentInformationField.text!.stringByReplacingOccurrencesOfString(" ", withString: "")
+        let strippedSiteCode = self.siteCodeField.text!.stringByReplacingOccurrencesOfString(" ", withString: "")
+        
+        let aFieldIsEmpty = (strippedStudentInformation == "") || (strippedSiteCode == "")
+        
+        return !aFieldIsEmpty
     }
     
     func getDocumentsURL() -> NSURL {
@@ -67,7 +90,7 @@ class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerCont
     }
     
     func fileInDocumentsDirectory(filename: String) -> String {
-        let fileURL = getDocumentsURL().URLByAppendingPathComponent(filename)
+        let fileURL = self.getDocumentsURL().URLByAppendingPathComponent(filename)
         
         return fileURL.path!
     }
@@ -81,7 +104,7 @@ class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerCont
         let imageData = UIImageJPEGRepresentation(image, 0.4)
         
         do {
-            try imageData!.writeToFile(fileInDocumentsDirectory(self.imagePath), options: .AtomicWrite)
+            try imageData!.writeToFile(self.fileInDocumentsDirectory(self.imagePath), options: .AtomicWrite)
         } catch {
             print(error)
         }
