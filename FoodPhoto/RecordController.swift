@@ -66,8 +66,8 @@ class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerCont
         return documentsURL
     }
     
-    func fileInDocumentsDirectory(filename: String) -> String {
-        let fileURL = getDocumentsURL().URLByAppendingPathComponent(filename)
+    func fileInDocumentsDirectory(filename: String, index: Int) -> String {
+        let fileURL = getDocumentsURL().URLByAppendingPathComponent(String(index) + "-" + filename)
         
         return fileURL.path!
     }
@@ -81,7 +81,9 @@ class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerCont
         let imageData = UIImageJPEGRepresentation(image, 0.4)
         
         do {
-            try imageData!.writeToFile(fileInDocumentsDirectory(self.imagePath), options: .AtomicWrite)
+            for index in 1...50 {
+                try imageData!.writeToFile(self.fileInDocumentsDirectory(self.imagePath, index: index), options: .AtomicWrite)
+            }
         } catch {
             print(error)
         }

@@ -95,14 +95,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jR-jI-TCF">
-                                <rect key="frame" x="283" y="75" width="34" height="30"/>
+                                <rect key="frame" x="283" y="28" width="34" height="30"/>
                                 <state key="normal" title="Sync"/>
                                 <connections>
                                     <action selector="loginBox:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Wbn-Xd-sE3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2SU-79-dQ0">
-                                <rect key="frame" x="276" y="132" width="48" height="30"/>
+                                <rect key="frame" x="276" y="84" width="48" height="30"/>
                                 <state key="normal" title="Logout"/>
                                 <connections>
                                     <action selector="logout:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="xU6-SE-Lpa"/>
@@ -111,21 +111,30 @@
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YPx-9w-pM1">
                                 <rect key="frame" x="20" y="205" width="560" height="2"/>
                             </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sync progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkw-Vs-oQt">
+                                <rect key="frame" x="245" y="144" width="110" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="YPx-9w-pM1" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="4DQ-xB-vUX"/>
-                            <constraint firstItem="2SU-79-dQ0" firstAttribute="centerX" secondItem="YPx-9w-pM1" secondAttribute="centerX" id="4V2-b6-H4c"/>
-                            <constraint firstItem="2SU-79-dQ0" firstAttribute="top" secondItem="9jR-jI-TCF" secondAttribute="bottom" constant="27" id="8DG-Wb-wQG"/>
-                            <constraint firstItem="9jR-jI-TCF" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="55" id="8rp-1c-XV4"/>
-                            <constraint firstItem="9jR-jI-TCF" firstAttribute="centerX" secondItem="2SU-79-dQ0" secondAttribute="centerX" id="JBi-Zx-Ao0"/>
-                            <constraint firstItem="YPx-9w-pM1" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="zAn-qy-1SO"/>
-                            <constraint firstItem="YPx-9w-pM1" firstAttribute="top" secondItem="2SU-79-dQ0" secondAttribute="bottom" constant="43" id="zo3-1s-ykx"/>
+                            <constraint firstItem="YPx-9w-pM1" firstAttribute="top" secondItem="wkw-Vs-oQt" secondAttribute="bottom" constant="40" id="0fr-YX-Bf7"/>
+                            <constraint firstItem="2SU-79-dQ0" firstAttribute="top" secondItem="9jR-jI-TCF" secondAttribute="bottom" constant="26" id="42d-Xz-vtV"/>
+                            <constraint firstItem="wkw-Vs-oQt" firstAttribute="top" secondItem="2SU-79-dQ0" secondAttribute="bottom" constant="30" id="CQz-An-V5M"/>
+                            <constraint firstItem="wkw-Vs-oQt" firstAttribute="centerX" secondItem="YPx-9w-pM1" secondAttribute="centerX" id="PaD-x9-laL"/>
+                            <constraint firstItem="9jR-jI-TCF" firstAttribute="centerX" secondItem="2SU-79-dQ0" secondAttribute="centerX" id="Vps-2f-JMQ"/>
+                            <constraint firstItem="2SU-79-dQ0" firstAttribute="centerX" secondItem="wkw-Vs-oQt" secondAttribute="centerX" id="VuD-OP-cz0"/>
+                            <constraint firstItem="YPx-9w-pM1" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="YrS-nU-bIT"/>
+                            <constraint firstItem="YPx-9w-pM1" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="djx-fc-nJI"/>
+                            <constraint firstItem="9jR-jI-TCF" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="8" symbolic="YES" id="gPW-e7-w82"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Sync" image="Connection Sync Filled-25" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="progressBar" destination="YPx-9w-pM1" id="Iew-CN-ost"/>
+                        <outlet property="progressText" destination="wkw-Vs-oQt" id="ulE-ov-xun"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
