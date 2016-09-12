@@ -343,8 +343,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = FoodPhoto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.usu.nutrition.FoodPhoto;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.usu.ndfs.FoodPhoto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "69edc442-c4f5-400a-b4a0-0aed6ed395bb";
 			};
 			name = Debug;
 		};
@@ -356,8 +357,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = FoodPhoto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.usu.nutrition.FoodPhoto;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.usu.ndfs.FoodPhoto;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "69edc442-c4f5-400a-b4a0-0aed6ed395bb";
 			};
 			name = Release;
 		};
