@@ -94,13 +94,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jR-jI-TCF">
-                                <rect key="frame" x="283" y="223" width="34" height="30"/>
-                                <state key="normal" title="Sync"/>
-                                <connections>
-                                    <action selector="beginSync:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="l22-MP-85E"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2SU-79-dQ0">
                                 <rect key="frame" x="276" y="261" width="48" height="30"/>
                                 <state key="normal" title="Logout"/>
@@ -117,6 +110,14 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jR-jI-TCF">
+                                <rect key="frame" x="217" y="205" width="167" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Sync Photos"/>
+                                <connections>
+                                    <action selector="beginSync:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="l22-MP-85E"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
