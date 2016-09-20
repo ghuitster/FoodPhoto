@@ -180,9 +180,10 @@ class SyncController: UIViewController {
     }
     
     @IBAction func logout(sender: AnyObject) -> Void {
-        let logoutAlert = UIAlertController(title: "Logout", message: "Really log out?", preferredStyle: UIAlertControllerStyle.Alert)
+        let logoutAlert = UIAlertController(title: "Logout", message: "Are you really sure you want to log out of your Box account?", preferredStyle: UIAlertControllerStyle.Alert)
         
         logoutAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: {(action: UIAlertAction!) in
+            
             BOXContentClient.defaultClient().logOut()
             self.displayAlert("Logout Success", message: "Successfully logged out", error: nil)
         }))
