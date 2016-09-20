@@ -109,22 +109,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2SU-79-dQ0">
-                                <rect key="frame" x="276" y="261" width="48" height="30"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="logout:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="xU6-SE-Lpa"/>
-                                </connections>
-                            </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YPx-9w-pM1">
-                                <rect key="frame" x="20" y="337" width="560" height="2"/>
-                            </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sync progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkw-Vs-oQt">
-                                <rect key="frame" x="245" y="299" width="110" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jR-jI-TCF">
                                 <rect key="frame" x="217" y="205" width="167" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -133,18 +117,34 @@
                                     <action selector="beginSync:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="l22-MP-85E"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2SU-79-dQ0">
+                                <rect key="frame" x="276" y="323" width="48" height="30"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logout:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="xU6-SE-Lpa"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sync progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkw-Vs-oQt">
+                                <rect key="frame" x="245" y="265" width="110" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YPx-9w-pM1">
+                                <rect key="frame" x="20" y="300" width="560" height="2"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="YPx-9w-pM1" firstAttribute="top" secondItem="wkw-Vs-oQt" secondAttribute="bottom" constant="17" id="2gw-nw-kF8"/>
-                            <constraint firstItem="YPx-9w-pM1" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="5bK-ve-u20"/>
-                            <constraint firstItem="wkw-Vs-oQt" firstAttribute="centerX" secondItem="YPx-9w-pM1" secondAttribute="centerX" id="EXa-LI-Z3q"/>
-                            <constraint firstItem="wkw-Vs-oQt" firstAttribute="top" secondItem="2SU-79-dQ0" secondAttribute="bottom" constant="8" symbolic="YES" id="H98-o1-mDN"/>
-                            <constraint firstItem="2SU-79-dQ0" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="aqT-MZ-JIn"/>
-                            <constraint firstItem="2SU-79-dQ0" firstAttribute="top" secondItem="9jR-jI-TCF" secondAttribute="bottom" constant="8" symbolic="YES" id="giA-hE-J9r"/>
-                            <constraint firstItem="9jR-jI-TCF" firstAttribute="centerX" secondItem="2SU-79-dQ0" secondAttribute="centerX" id="jUa-ot-L7R"/>
-                            <constraint firstItem="YPx-9w-pM1" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="kod-8t-Jfs"/>
-                            <constraint firstItem="2SU-79-dQ0" firstAttribute="centerX" secondItem="wkw-Vs-oQt" secondAttribute="centerX" id="q5l-4M-N8U"/>
+                            <constraint firstItem="YPx-9w-pM1" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="2Cy-XK-3I0"/>
+                            <constraint firstItem="wkw-Vs-oQt" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="9L5-BQ-Bna"/>
+                            <constraint firstItem="wkw-Vs-oQt" firstAttribute="centerX" secondItem="YPx-9w-pM1" secondAttribute="centerX" id="9Qn-eT-Roz"/>
+                            <constraint firstItem="2SU-79-dQ0" firstAttribute="top" secondItem="YPx-9w-pM1" secondAttribute="bottom" constant="21" id="Meh-bL-7zA"/>
+                            <constraint firstItem="YPx-9w-pM1" firstAttribute="top" secondItem="wkw-Vs-oQt" secondAttribute="bottom" constant="14" id="Sca-Pp-RDX"/>
+                            <constraint firstItem="YPx-9w-pM1" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="XcY-IE-bOP"/>
+                            <constraint firstItem="9jR-jI-TCF" firstAttribute="centerX" secondItem="wkw-Vs-oQt" secondAttribute="centerX" id="gII-w8-8rj"/>
+                            <constraint firstItem="YPx-9w-pM1" firstAttribute="centerX" secondItem="2SU-79-dQ0" secondAttribute="centerX" id="r66-Es-XMp"/>
+                            <constraint firstItem="wkw-Vs-oQt" firstAttribute="top" secondItem="9jR-jI-TCF" secondAttribute="bottom" constant="12" id="zy6-th-tN0"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Sync" image="Connection Sync Filled-25" id="cPa-gy-q4n"/>
