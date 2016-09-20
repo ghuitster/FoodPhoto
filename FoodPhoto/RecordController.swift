@@ -9,6 +9,13 @@ class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerCont
     override func viewDidLoad() -> Void {
         super.viewDidLoad()
         self.studentInformationField.becomeFirstResponder()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() -> Void {
+        view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() -> Void {
@@ -36,12 +43,12 @@ class RecordController: UIViewController, UITextFieldDelegate, UIImagePickerCont
         return strippedStudentInformation + "-" + self.siteCodeField.text! + "-" + convertedDate + "-"
     }
     
-    @IBAction func takeBeforePicture(sender: UIBarButtonItem) -> Void {
+    @IBAction func takeBeforePicture(sender: UIButton) -> Void {
         self.imagePath = self.getPathStart() + "before.jpg"
         self.takePicture()
     }
     
-    @IBAction func takeAfterPicture(sender: UIBarButtonItem) -> Void {
+    @IBAction func takeAfterPicture(sender: UIButton) -> Void {
         self.imagePath = self.getPathStart() + "after.jpg"
         self.takePicture()
     }

@@ -18,30 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3bD-sj-A78">
-                                <rect key="frame" x="0.0" y="507" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem title="Before" id="z09-C1-eUb">
-                                        <connections>
-                                            <action selector="takeBeforePicture:" destination="9pv-A4-QxB" id="Gp8-0O-XhL"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="VYk-t8-oDf"/>
-                                    <barButtonItem title="After" id="ctx-cx-bhN">
-                                        <connections>
-                                            <action selector="takeAfterPicture:" destination="9pv-A4-QxB" id="fcm-iY-txM"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="line" placeholder="Student ID or Name" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="20" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="VWw-Xe-RQY">
                                 <rect key="frame" x="175" y="205" width="250" height="36"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="B9V-o6-mkC"/>
-                                    <constraint firstAttribute="height" constant="36" id="wa6-ME-xxl"/>
+                                    <constraint firstAttribute="width" constant="250" id="ddM-80-dJ1"/>
+                                    <constraint firstAttribute="height" constant="36" id="vCf-3m-Gnn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="0Qi-S2-GLn"/>
                                 </connections>
@@ -49,25 +33,56 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="line" placeholder="Site Code" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="20" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="unb-si-pU4">
                                 <rect key="frame" x="175" y="282" width="250" height="36"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="sUo-Av-GsK"/>
+                                    <constraint firstAttribute="height" constant="36" id="8ng-g2-2nE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="CRg-sG-NLD"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBL-nA-Z6e">
+                                <rect key="frame" x="175" y="372" width="115" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="5GE-ka-HLJ"/>
+                                    <constraint firstAttribute="width" constant="115" id="h9n-Ae-Gbh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Before" image="Camera Filled Blue-26">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="takeBeforePicture:" destination="9pv-A4-QxB" eventType="touchUpInside" id="v16-8r-W5b"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yp5-BN-L0V">
+                                <rect key="frame" x="325" y="372" width="100" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="2GR-TO-Knr"/>
+                                    <constraint firstAttribute="width" constant="100" id="zyt-YS-D2Y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="After" image="Camera Filled Blue-26">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="takeAfterPicture:" destination="9pv-A4-QxB" eventType="touchUpInside" id="1jh-My-U9x"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="unb-si-pU4" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="9fK-5B-e1n"/>
-                            <constraint firstItem="VWw-Xe-RQY" firstAttribute="trailing" secondItem="unb-si-pU4" secondAttribute="trailing" id="FMG-af-jfa"/>
-                            <constraint firstItem="VWw-Xe-RQY" firstAttribute="leading" secondItem="unb-si-pU4" secondAttribute="leading" id="QnK-3E-hyU"/>
-                            <constraint firstItem="unb-si-pU4" firstAttribute="centerX" secondItem="3bD-sj-A78" secondAttribute="centerX" id="U9p-KI-GD3" userLabel="Site Code Field.centerX = centerX"/>
-                            <constraint firstItem="unb-si-pU4" firstAttribute="top" secondItem="VWw-Xe-RQY" secondAttribute="bottom" constant="41" id="c6A-yh-lG8"/>
-                            <constraint firstItem="3bD-sj-A78" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="ipL-xw-wel"/>
-                            <constraint firstAttribute="trailing" secondItem="3bD-sj-A78" secondAttribute="trailing" id="pld-RS-OhI"/>
-                            <constraint firstItem="3bD-sj-A78" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="rX0-qf-fmW"/>
+                            <constraint firstItem="XBL-nA-Z6e" firstAttribute="top" secondItem="unb-si-pU4" secondAttribute="bottom" constant="54" id="0QD-bH-2by"/>
+                            <constraint firstItem="unb-si-pU4" firstAttribute="trailing" secondItem="yp5-BN-L0V" secondAttribute="trailing" id="Mj5-qH-kXY"/>
+                            <constraint firstItem="VWw-Xe-RQY" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="R5v-l3-D4b"/>
+                            <constraint firstItem="VWw-Xe-RQY" firstAttribute="trailing" secondItem="unb-si-pU4" secondAttribute="trailing" id="Sf0-Us-9en"/>
+                            <constraint firstItem="unb-si-pU4" firstAttribute="top" secondItem="VWw-Xe-RQY" secondAttribute="bottom" constant="41" id="UVB-Nz-R6E"/>
+                            <constraint firstItem="unb-si-pU4" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="Znt-g5-hKO"/>
+                            <constraint firstItem="unb-si-pU4" firstAttribute="leading" secondItem="XBL-nA-Z6e" secondAttribute="leading" id="cW5-Dw-Hv8"/>
+                            <constraint firstItem="VWw-Xe-RQY" firstAttribute="leading" secondItem="unb-si-pU4" secondAttribute="leading" id="mpo-II-jP3"/>
+                            <constraint firstItem="XBL-nA-Z6e" firstAttribute="top" secondItem="yp5-BN-L0V" secondAttribute="top" id="nZt-Mr-S7T"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Record" image="Camera Filled-25" id="jlS-OH-5dv"/>
@@ -233,6 +248,7 @@ for support</string>
     </scenes>
     <resources>
         <image name="About Filled-25" width="25" height="25"/>
+        <image name="Camera Filled Blue-26" width="25" height="25"/>
         <image name="Camera Filled-25" width="25" height="25"/>
         <image name="Connection Sync Filled-25" width="25" height="25"/>
     </resources>
