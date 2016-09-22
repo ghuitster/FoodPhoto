@@ -2,6 +2,10 @@ import UIKit
 import BoxContentSDK
 import ReachabilitySwift
 
+enum SyncError: ErrorType {
+    case folderCreationError
+}
+
 class SyncController: UIViewController {
     @IBOutlet var progressBar: UIProgressView!
     @IBOutlet var progressText: UILabel!
@@ -106,7 +110,15 @@ class SyncController: UIViewController {
         var imagesUploaded = 0
         self.updateProgress(imagesUploaded, total: totalImages)
 
-        let mySerialQueue = dispatch_queue_create("edu.usu.nutrition", DISPATCH_QUEUE_SERIAL)
+        let mySerialQueue = dispatch_queue_create("edu.usu.ndfs", DISPATCH_QUEUE_SERIAL)
+        
+        var imageFolderIds = [String: String]()
+        
+        do {
+            imageFolderIds = try self.createImageFolderMapping(jpgFiles, foodPhotoFolderId: foodPhotoFolderId)
+        } catch {
+            return
+        }
         
         for jpgFile in jpgFiles {
             dispatch_async(mySerialQueue) {
@@ -118,8 +130,9 @@ class SyncController: UIViewController {
                 
                 let imageName = jpgFile.lastPathComponent!
                 let data = NSFileManager.defaultManager().contentsAtPath(jpgFile.path!)!
+                let folderName = self.getFolderName(imageName)
                 
-                let uploadRequest = BOXContentClient.defaultClient().fileUploadRequestToFolderWithID(foodPhotoFolderId, fromData: data, fileName: imageName)
+                let uploadRequest = BOXContentClient.defaultClient().fileUploadRequestToFolderWithID(imageFolderIds[folderName], fromData: data, fileName: imageName)
                 uploadRequest.performRequestWithProgress({(totalBytesTransferred: Int64, totalBytesExpectedToTransfer: Int64) -> Void in
                     }, completion: {(file: BOXFile!, error: NSError!) -> Void in
                         if error == nil {
@@ -135,6 +148,7 @@ class SyncController: UIViewController {
                             print("successfully uploaded " + imageName)
                             
                             imagesUploaded += 1
+                            
                             
                             dispatch_sync(dispatch_get_main_queue()) {
                                 self.updateProgress(imagesUploaded, total: totalImages)
@@ -152,6 +166,113 @@ class SyncController: UIViewController {
                 dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
             }
         }
+    }
+    
+    func createImageFolderMapping(jpgFiles: [NSURL], foodPhotoFolderId: String) throws -> [String: String] {
+        var imageFolderIds = [String: String]()
+        
+        for jpgFile in jpgFiles {
+            let imageName = jpgFile.lastPathComponent!
+            let folderName = self.getFolderName(imageName)
+            
+            if(imageFolderIds[folderName] == nil) {
+                let imageFolderId = self.getImageFolderId(folderName, foodPhotoFolderId: foodPhotoFolderId)
+                
+                if(imageFolderId == nil) {
+                    throw SyncError.folderCreationError
+                }
+                
+                imageFolderIds[folderName] = imageFolderId
+            }
+        }
+        
+        return imageFolderIds
+    }
+    
+    func getFolderName(imageName: String) -> String {
+        let imageNameArray = imageName.characters.split{$0 == "-"}.map(String.init)
+        
+        return imageNameArray[1] + "-" + imageNameArray[2]
+    }
+    
+    func getImageFolderId(folderName: String, foodPhotoFolderId: String) -> String? {
+        let mySerialQueue = dispatch_queue_create("edu.usu.ndfs.folderGetting", DISPATCH_QUEUE_SERIAL)
+        var imageFolderId: String?
+        
+        let outerSemaphore = dispatch_semaphore_create(0)
+        
+        dispatch_async(mySerialQueue) {
+            self.backgroundTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler({
+                self.endBackgroundTask()
+            })
+            
+            let semaphore = dispatch_semaphore_create(0)
+            
+            let foodPhotoItemsRequest = BOXContentClient.defaultClient().folderItemsRequestWithID(foodPhotoFolderId)
+            foodPhotoItemsRequest.performRequestWithCompletion({(items: [AnyObject]!, error: NSError!) -> Void in
+                if error == nil {
+                    for item in items as! [BOXItem] {
+                        if item.isFolder && item.name == folderName {
+                            imageFolderId = item.modelID
+                            break
+                        }
+                    }
+                } else {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.displayAlert("Sync Error", message: "There was a problem syncing. The error was: " + error.box_localizedFailureReasonString(), error: error)
+                    }
+                }
+                
+                self.endBackgroundTask()
+                dispatch_semaphore_signal(semaphore)
+                dispatch_semaphore_signal(outerSemaphore)
+            })
+            
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+        }
+        
+        dispatch_semaphore_wait(outerSemaphore, DISPATCH_TIME_FOREVER)
+        
+        if(imageFolderId == nil) {
+            imageFolderId = self.createImageFolder(folderName, foodPhotoFolderId: foodPhotoFolderId)
+        }
+        
+        return imageFolderId
+    }
+    
+    func createImageFolder(folderName: String, foodPhotoFolderId: String) -> String? {
+        var imageFolderId: String?
+        let mySerialQueue = dispatch_queue_create("edu.usu.ndfs.folderCreation", DISPATCH_QUEUE_SERIAL)
+        
+        let outerSemaphore = dispatch_semaphore_create(0)
+        
+        dispatch_async(mySerialQueue) {
+            self.backgroundTask = UIApplication.sharedApplication().beginBackgroundTaskWithExpirationHandler({
+                self.endBackgroundTask()
+            })
+            
+            let semaphore = dispatch_semaphore_create(0)
+            
+            let foodPhotoFolderCreateRequest = BOXContentClient.defaultClient().folderCreateRequestWithName(folderName, parentFolderID: foodPhotoFolderId)
+            foodPhotoFolderCreateRequest.performRequestWithCompletion({(folder: BOXFolder!, error: NSError!) -> Void in
+                if error == nil {
+                    imageFolderId = folder.modelID
+                } else {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.displayAlert("Sync Error", message: "There was a problem syncing. The error was: " + error.box_localizedFailureReasonString(), error: error)
+                    }
+                }
+                self.endBackgroundTask()
+                dispatch_semaphore_signal(semaphore)
+                dispatch_semaphore_signal(outerSemaphore)
+            })
+            
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+        }
+        
+        dispatch_semaphore_wait(outerSemaphore, DISPATCH_TIME_FOREVER)
+        
+        return imageFolderId
     }
     
     func endBackgroundTask() -> Void {
@@ -183,7 +304,6 @@ class SyncController: UIViewController {
         let logoutAlert = UIAlertController(title: "Logout", message: "Are you really sure you want to log out of your Box account?", preferredStyle: UIAlertControllerStyle.Alert)
         
         logoutAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: {(action: UIAlertAction!) in
-            
             BOXContentClient.defaultClient().logOut()
             self.displayAlert("Logout Success", message: "Successfully logged out", error: nil)
         }))
