@@ -79,12 +79,12 @@ class SyncController: UIViewController {
                         if error == nil {
                             self.uploadImages(folder.modelID)
                         } else {
-                            self.displayAlert("Sync Error", message: "There was a problem syncing. The error was: " + error.box_localizedFailureReasonString(), error: error)
+                            self.displayAlert("Sync Error", message: "There was a problem syncing. Something bad happened when trying to create the FoodPhoto folder. The error was: " + error.box_localizedFailureReasonString(), error: error)
                         }
                     })
                 }
             } else {
-                self.displayAlert("Sync Error", message: "There was a problem syncing. The error was: " + error.box_localizedFailureReasonString(), error: error)
+                self.displayAlert("Sync Error", message: "There was a problem syncing. An issue arose when trying to get the FoodPhoto folder ID from Box. The error was: " + error.box_localizedFailureReasonString(), error: error)
             }
         })
     }
@@ -96,7 +96,7 @@ class SyncController: UIViewController {
         do {
             directoryContents = try NSFileManager.defaultManager().contentsOfDirectoryAtURL(documentsUrl, includingPropertiesForKeys: nil, options: [])
         } catch {
-            self.displayAlert("Sync Error", message: "There was a problem syncing", error: error)
+            self.displayAlert("Sync Error", message: "There was a problem syncing. Something bad happened when getting the images stored on this device.", error: error)
             return [NSURL]()
         }
         
@@ -140,7 +140,7 @@ class SyncController: UIViewController {
                                 try NSFileManager.defaultManager().removeItemAtURL(jpgFile)
                             } catch {
                                 dispatch_sync(dispatch_get_main_queue()) {
-                                    self.displayAlert("Sync Error", message: "There was an error when uploading " + imageName, error: error)
+                                    self.displayAlert("Sync Error", message: "There was an error when uploading " + imageName + ". The image was unable to be deleted from this device.", error: error)
                                 }
                                 return
                             }
@@ -219,7 +219,7 @@ class SyncController: UIViewController {
                     }
                 } else {
                     dispatch_async(dispatch_get_main_queue()) {
-                        self.displayAlert("Sync Error", message: "There was a problem syncing. The error was: " + error.box_localizedFailureReasonString(), error: error)
+                        self.displayAlert("Sync Error", message: "There was a problem syncing. Something bad happened when trying to get the folder " + folderName + " ID from Box. The error was: " + error.box_localizedFailureReasonString(), error: error)
                     }
                 }
                 
@@ -259,7 +259,7 @@ class SyncController: UIViewController {
                     imageFolderId = folder.modelID
                 } else {
                     dispatch_async(dispatch_get_main_queue()) {
-                        self.displayAlert("Sync Error", message: "There was a problem syncing. The error was: " + error.box_localizedFailureReasonString(), error: error)
+                        self.displayAlert("Sync Error", message: "There was a problem syncing. An error occurred when trying to create the folder " + folderName + ". The error was: " + error.box_localizedFailureReasonString(), error: error)
                     }
                 }
                 self.endBackgroundTask()
