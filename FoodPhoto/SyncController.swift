@@ -212,7 +212,7 @@ class SyncController: UIViewController {
             foodPhotoItemsRequest.performRequestWithCompletion({(items: [AnyObject]!, error: NSError!) -> Void in
                 if error == nil {
                     for item in items as! [BOXItem] {
-                        if item.isFolder && item.name == folderName {
+                        if item.isFolder && (item.name.caseInsensitiveCompare(folderName) == NSComparisonResult.OrderedSame) {
                             imageFolderId = item.modelID
                             break
                         }
